@@ -21,6 +21,7 @@ app.get('/reset', async (req, res) => {
 
         if (usersSnapshot.empty) {
             console.log('No demo users found.');
+            res.send('No demo users found.');
             return;
         }
 
@@ -30,8 +31,10 @@ app.get('/reset', async (req, res) => {
         });
         await batch.commit();
         console.log('ApiRequests field reset for all demo users.');
+        res.send('ApiRequests field reset for all demo users.');
     } catch (error) {
         console.error('Error resetting ApiRequests:', error);
+        res.send('Error resetting ApiRequests:', error);
     }
 })
 
